@@ -30,7 +30,7 @@ switch (numAl) {
     default:
         alert("No naciste para ser entrenador Pokemon")
         break;
-}*/
+}
 
 let numero = Number(prompt("Bienvenido a la ruleta pokemon, ingrese un numero del 0 al 10 para ver con que Pokemon se queda."))
 
@@ -42,3 +42,85 @@ for (let i = 0; i < pokemon.length; i++) {
         break
     }
 }
+*/
+function cotizacionC (num1, num2){
+    resultado = num1 / num2
+    return alert(`Recibirá $ ${resultado.toFixed(2)}`)
+}
+function cotizacionV (num1 , num2){
+    resultado = num1 * num2
+    return alert(`Recibirá $ ${resultado.toFixed(2)} pesos argentinos`) 
+}
+
+let dolarC = 285
+let dolarV = 281
+
+let euroC = 313
+let euroV = 308
+
+let realC = 26;
+let realV = 25
+
+let valorIngresado
+let resultado = 0
+
+let eleccion = prompt(`Que desea hacer?
+1. Comprar.
+2. Vender.
+3. Salir.`)
+
+switch(eleccion){
+    case "1":
+        let caso1 = Number(prompt(`Que desea comprar?
+        1. Dolar.
+        2. Euro.
+        3. Real.
+        4. Volver atras.`))
+
+        switch(caso1){
+            case 1:
+                valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
+                cotizacionC (valorIngresado, dolarC)
+            break
+            case 2:
+                valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
+                cotizacionC (valorIngresado, euroC)
+            break
+            case 3:
+                valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
+                cotizacionC (valorIngresado, realC)
+            break
+            case 4:
+                mostrarMenu();
+            break
+        }
+        break
+
+    case "2":
+        let caso2 = Number(prompt(`Que desea vender?
+        1. Dolar.
+        2. Euro.
+        3. Real.
+        4. Volver atras.`))
+        switch(caso2){
+            case 1:
+                valorIngresado = Number(prompt(`Ingrese la cantidad de dolares que desea vender.`))
+                cotizacionV (valorIngresado, dolarV) 
+            break
+            case 2:
+                valorIngresado = Number(prompt(`Ingrese la cantidad de euros que desea vender.`))
+                cotizacionV (valorIngresado, euroV)
+            break
+            case 3:
+                valorIngresado = Number(prompt(`Ingrese la cantidad de reales que desea vender.`))
+                cotizacionV (valorIngresado, realV)
+            break
+        }
+        break
+    case "3":
+        alert(`Gracias por visitarnos`)
+        break
+    default:
+        alert(`No ingresaste una opcion valida.`)
+}
+
