@@ -58,12 +58,15 @@ let dolarV = 281
 let euroC = 313
 let euroV = 308
 
-let realC = 26;
+let realC = 26
 let realV = 25
 
 let valorIngresado
 let resultado = 0
 
+let y = 1
+
+do {
 let eleccion = prompt(`Que desea hacer?
 1. Comprar.
 2. Vender.
@@ -91,7 +94,7 @@ switch(eleccion){
                 cotizacionC (valorIngresado, realC)
             break
             case 4:
-                mostrarMenu();
+                
             break
         }
         break
@@ -105,7 +108,7 @@ switch(eleccion){
         switch(caso2){
             case 1:
                 valorIngresado = Number(prompt(`Ingrese la cantidad de dolares que desea vender.`))
-                cotizacionV (valorIngresado, dolarV) 
+                cotizacionV (valorIngresado, dolarV)
             break
             case 2:
                 valorIngresado = Number(prompt(`Ingrese la cantidad de euros que desea vender.`))
@@ -119,8 +122,9 @@ switch(eleccion){
         break
     case "3":
         alert(`Gracias por visitarnos`)
+        y++
         break
     default:
         alert(`No ingresaste una opcion valida.`)
 }
-
+}while(y = 2)
