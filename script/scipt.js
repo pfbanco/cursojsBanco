@@ -64,7 +64,7 @@ let realV = 25
 let valorIngresado
 let resultado = 0
 
-let y = 1
+let y = true
 
 do {
 let eleccion = prompt(`Que desea hacer?
@@ -122,9 +122,9 @@ switch(eleccion){
         break
     case "3":
         alert(`Gracias por visitarnos`)
-        y++
+        y = false
         break
     default:
         alert(`No ingresaste una opcion valida.`)
 }
-}while(y = 2)
+}while(y === true)
