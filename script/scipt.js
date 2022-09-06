@@ -83,7 +83,14 @@ switch(eleccion){
         switch(caso1){
             case 1:
                 valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
-                cotizacionC (valorIngresado, dolarC)
+                //cotizacionC (valorIngresado, dolarC)
+
+                if (isNaN(valorIngresado) === true){
+                    alert(`Debe ingresar un numero`)
+                }else{
+                    cotizacionC (valorIngresado, dolarC)
+                }
+
             break
             case 2:
                 valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
