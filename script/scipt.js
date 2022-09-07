@@ -84,8 +84,7 @@ switch(eleccion){
             case 1:
                 valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
                 //cotizacionC (valorIngresado, dolarC)
-
-                if (isNaN(valorIngresado) === true){
+                if (isNaN(valorIngresado)){
                     alert(`Debe ingresar un numero`)
                 }else{
                     cotizacionC (valorIngresado, dolarC)
@@ -94,15 +93,23 @@ switch(eleccion){
             break
             case 2:
                 valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
-                cotizacionC (valorIngresado, euroC)
+                if (isNaN(valorIngresado)){
+                    alert(`Debe ingresar un numero`)
+                }else{
+                    cotizacionC (valorIngresado, euroC)
+                }
             break
             case 3:
                 valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
-                cotizacionC (valorIngresado, realC)
+                if (isNaN(valorIngresado)){
+                    alert(`Debe ingresar un numero`)
+                }else{
+                    cotizacionC (valorIngresado, realC)
+                }
             break
             case 4:
                 
-            break
+            break1
         }
         break
 
@@ -115,15 +122,27 @@ switch(eleccion){
         switch(caso2){
             case 1:
                 valorIngresado = Number(prompt(`Ingrese la cantidad de dolares que desea vender.`))
-                cotizacionV (valorIngresado, dolarV)
+                if (isNaN(valorIngresado)){
+                    alert(`Debe ingresar un numero`)
+                }else{
+                    cotizacionV (valorIngresado, dolarV)
+                }
             break
             case 2:
                 valorIngresado = Number(prompt(`Ingrese la cantidad de euros que desea vender.`))
-                cotizacionV (valorIngresado, euroV)
+                if (isNaN(valorIngresado)){
+                    alert(`Debe ingresar un numero`)
+                }else{
+                    cotizacionV (valorIngresado, euroV)
+                }
             break
             case 3:
                 valorIngresado = Number(prompt(`Ingrese la cantidad de reales que desea vender.`))
-                cotizacionV (valorIngresado, realV)
+                if (isNaN(valorIngresado)){
+                    alert(`Debe ingresar un numero`)
+                }else{
+                    cotizacionV (valorIngresado, realV)
+                }
             break
         }
         break
