@@ -43,6 +43,8 @@ for (let i = 0; i < pokemon.length; i++) {
     }
 }
 */
+
+
 function cotizacionC (num1, num2){
     resultado = num1 / num2
     return alert(`Recibirá $ ${resultado.toFixed(2)}`)
@@ -52,14 +54,25 @@ function cotizacionV (num1 , num2){
     return alert(`Recibirá $ ${resultado.toFixed(2)} pesos argentinos`) 
 }
 
-let dolarC = 285
+const precioDivisa = [{
+    dolarC: 285, 
+    dolarV: 281
+},
+    {euroC: 313, 
+    euroV: 308
+},
+    {realC: 26, 
+    realV: 25
+}]
+
+/*let dolarC = 285
 let dolarV = 281
 
 let euroC = 313
 let euroV = 308
 
 let realC = 26
-let realV = 25
+let realV = 25*/
 
 let valorIngresado
 let resultado = 0
@@ -83,11 +96,11 @@ switch(eleccion){
         switch(caso1){
             case 1:
                 valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
-                //cotizacionC (valorIngresado, dolarC)
                 if (isNaN(valorIngresado)){
                     alert(`Debe ingresar un numero`)
                 }else{
-                    cotizacionC (valorIngresado, dolarC)
+                    cotizacionC (valorIngresado, precioDivisa[0].dolarC)
+                    //cotizacionC (valorIngresado, dolarC)
                 }
 
             break
@@ -96,7 +109,8 @@ switch(eleccion){
                 if (isNaN(valorIngresado)){
                     alert(`Debe ingresar un numero`)
                 }else{
-                    cotizacionC (valorIngresado, euroC)
+                    cotizacionC (valorIngresado, precioDivisa[1].euroC)
+                    //cotizacionC (valorIngresado, euroC)
                 }
             break
             case 3:
@@ -104,7 +118,8 @@ switch(eleccion){
                 if (isNaN(valorIngresado)){
                     alert(`Debe ingresar un numero`)
                 }else{
-                    cotizacionC (valorIngresado, realC)
+                    cotizacionC (valorIngresado, precioDivisa[2].realC)
+                    //cotizacionC (valorIngresado, realC)
                 }
             break
             case 4:
@@ -125,7 +140,8 @@ switch(eleccion){
                 if (isNaN(valorIngresado)){
                     alert(`Debe ingresar un numero`)
                 }else{
-                    cotizacionV (valorIngresado, dolarV)
+                    cotizacionV (valorIngresado, precioDivisa[0].dolarV)
+                    //cotizacionV (valorIngresado, dolarV)
                 }
             break
             case 2:
@@ -133,7 +149,8 @@ switch(eleccion){
                 if (isNaN(valorIngresado)){
                     alert(`Debe ingresar un numero`)
                 }else{
-                    cotizacionV (valorIngresado, euroV)
+                    cotizacionV (valorIngresado, precioDivisa[1].euroV)
+                    //cotizacionV (valorIngresado, euroV)
                 }
             break
             case 3:
@@ -141,6 +158,7 @@ switch(eleccion){
                 if (isNaN(valorIngresado)){
                     alert(`Debe ingresar un numero`)
                 }else{
+                    cotizacionV (valorIngresado, precioDivisa[2].realV)
                     cotizacionV (valorIngresado, realV)
                 }
             break
