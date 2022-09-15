@@ -44,7 +44,7 @@ for (let i = 0; i < pokemon.length; i++) {
 }
 */
 
-
+/*
 function cotizacionC (num1, num2){
     resultado = num1 / num2
     return alert(`Recibirá $ ${resultado.toFixed(2)}`)
@@ -72,7 +72,7 @@ let euroC = 313
 let euroV = 308
 
 let realC = 26
-let realV = 25*/
+let realV = 25
 
 let valorIngresado
 let resultado = 0
@@ -170,5 +170,128 @@ switch(eleccion){
         break
     default:
         alert(`No ingresaste una opcion valida.`)
+}
+}while(y === true)*/
+
+//-----------------------------------------------------------
+
+//function crearEquipo(){
+//    if (confirm = true){
+//        equipoPkm.push(elijeUnPkm)
+//    }
+//    else
+//    alert('Continua buscando tu Pokemon')
+//}
+
+function Pokemon(nombre,id, tipo1, tipo2, habilidad){
+    this.nombre = nombre
+    this.id = id
+    this.tipo1 = tipo1
+    this.tipo2 = tipo2
+    this.habilidad = habilidad
+}
+
+const pokemons = []
+let bulbasaur = new Pokemon('bulbasaur', 1, 'Planta', 'Veneno', 'Espesura')
+let ivysaur = new Pokemon('ivysaur',2, 'Plnata', 'Veneno','Espesura')
+let venasaur = new Pokemon('venasaur',3, 'Plnata', 'Veneno','Espesura')
+let charmander = new Pokemon('charmander',4, 'Fuego', 'Sin segundo tipo','Mar llamas')
+let charmeleon = new Pokemon('charmeleon',5, 'Fuego', 'Sin segundo tipo','Mar llamas')
+let charizard = new Pokemon('charizard',6, 'Fuego', 'Sin segundo tipo','Mar llamas')
+let squirtle = new Pokemon('squirtle',7, 'Agua', 'Sin segundo tipo','Torrente')
+let wartortle = new Pokemon('wartortle',8, 'Agua', 'Sin segundo tipo','Torrente')
+let blastoise = new Pokemon('blastoise',9, 'Agua', 'Sin segundo tipo','Torrente')
+let caterpie = new Pokemon('caterpie',10, 'Bicho', 'Sin segundo tipo','Polvo escudo')
+let metapod = new Pokemon('metapod',11, 'Bicho', 'Sin segundo tipo','Mudar')
+let butterfree = new Pokemon('butterfree',12, 'Bicho','Volador','Ojo compuesto')
+let weedle = new Pokemon('weedle',13, 'Bicho', 'Veneno','Polvo escudo')
+let kakuna = new Pokemon('kakuna',14, 'Bicho', 'Veneno','Mudar')
+let beedrill = new Pokemon('beedrill',15, 'Bicho', 'Veneno','Enjambre')
+let pidgey = new Pokemon('pidgey',16, 'Normal', 'Volador','Vista lince')
+let pidgeotto = new Pokemon('pidgeotto',17,'Normal', 'Volador','Vista lince')
+let pidgeot = new Pokemon('pidgeot',18, 'Normal', 'Volador','Vista lince')
+let rattata = new Pokemon('rattata',19, 'Normal', 'Sin segundo tipo','Fuga')
+let raticate = new Pokemon('raticate',20, 'Normal', 'Sin segundo tipo','Fuga')
+let spearow = new Pokemon('spearow',21, 'Normal','Volador','Vista lince')
+let fearow = new Pokemon('fearow',22, 'Normal','Volador','Vista lince')
+let ekans = new Pokemon('ekans',23, 'Veneno', 'Sin segundo tipo','Intimidacion')
+let arbok = new Pokemon('arbok',24, 'Veneno', 'Sin segundo tipo','Intimidacion')
+let pikachu = new Pokemon('pikachu',25, 'Electrico', 'Sin segundo tipo','Electricidad estatica')
+let raichu = new Pokemon('raichu',26, 'Electrico', 'Sin segundo tipo','Electricidad estatica')
+let sandshrew = new Pokemon('sandshrew',27, 'Tierra', 'Sin segundo tipo','Velo arena')
+let sandslash = new Pokemon('sandslash',28, 'Tierra', 'Sin segundo tipo','Velo arena')
+let nidoranH = new Pokemon('nidoranH',29, 'Veneno', 'Sin segundo tipo','Punto toxico')
+let nidorina = new Pokemon('nidorina',30, 'Veneno','Sin segundo tipo','Punto toxico')
+
+pokemons.push(bulbasaur, ivysaur, venasaur, charmander,charmeleon,charizard, squirtle, wartortle, blastoise, caterpie, metapod, butterfree, weedle, kakuna,beedrill, pidgey, pidgeotto, pidgeot, rattata, raticate, spearow, fearow, ekans, arbok, pikachu, raichu, sandshrew, sandslash ,nidoranH, nidorina)
+
+let equipoPkm = []
+
+let y = true
+
+
+function inicio() {opcInicio = prompt(`Qué desea hacer?
+1. Buscar Pokemon.
+2. Ver mi equipo.
+3. Borrar mi equipo.
+4. Salir.`)
+return opcInicio
+}
+function buscador () {
+    buscarPkm = prompt('Escribe el nombre del pokemon que buscas.').toLocaleLowerCase()
+    buscarPkmEnArray = pokemons.find(pkm => pkm.nombre == buscarPkm)
+    if(buscarPkmEnArray === undefined){
+    alert('Pokemon no encontrado, compruebe que el nombre de su Pokemon esté bien escrito.')
+    buscador()
+    }else{ 
+    return buscarPkmEnArray}
+}
+function agregarAlEquipo(){ 
+    confirm(`${buscarPkmEnArray.nombre.toUpperCase()} N: ${buscarPkmEnArray.id} 
+    Tipo: ${buscarPkmEnArray.tipo1.toUpperCase()}, ${buscarPkmEnArray.tipo2.toUpperCase()} 
+    Habilidad: ${buscarPkmEnArray.habilidad.toUpperCase()}
+    Desea agregar a ${buscarPkmEnArray.nombre.toUpperCase()} a su equipo?`)
+    if(agregarAlEquipo === false){
+    buscador()
+    } else if(equipoPkm.length === 6){
+    alert('Tu equipo está completo.')
+    inicio()
+    }else{
+    equipoPkm.push(buscarPkmEnArray)
+    return equipoPkm    
+    }
+}
+function borrarEquipo(){
+    do(equipoPkm.shift())
+    while(equipoPkm.length != 0)
+    return alert('Borraste tu equipo.')
+}
+
+
+do {
+inicio()
+switch(opcInicio){
+    case "1":
+    do{
+    buscador()
+    agregarAlEquipo()
+    }while(buscarPkm === 'esc' || equipoPkm.length <= 5)
+    continue
+    case "2":
+        if(equipoPkm.length == 0){
+        alert('Aún no agregaste ningun Pokemon a tu equipo.')
+        }else{
+        alert(equipoPkm.map(equipo => `${(equipo.nombre).toUpperCase()} `))
+        }    
+        break
+    case "3":
+        borrarEquipo()
+        break
+    case "4":
+        alert(`Gracias por visitarnos`)
+        y = false
+        break
+    default:
+        alert(`No ingresaste una opción valida.`)
 }
 }while(y === true)
