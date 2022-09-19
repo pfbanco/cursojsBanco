@@ -1,201 +1,18 @@
-/*let numAl = Math.floor(Math.random()*10 )
-switch (numAl) {
-    case 1:
-        alert("PIKACHU");
-        break;
-    case 2:
-        alert("CHARMANDER");
-        break; 
-    case 3:
-        alert("BULBASAUR");
-        break;
-    case 4:
-        alert("SQUIRTLE");
-        break;
-    case 5:
-        alert("EEVEE");
-        break;
-    case 6:
-        alert("CHIKORITA");
-        break;
-    case 7:
-        alert("CYNDAQUIL");
-        break;
-    case 8:
-        alert("TOTODILE");
-        break;
-    case 9:
-        alert("TOGEPI");
-        break;
-    default:
-        alert("No naciste para ser entrenador Pokemon")
-        break;
-}
-
-let numero = Number(prompt("Bienvenido a la ruleta pokemon, ingrese un numero del 0 al 10 para ver con que Pokemon se queda."))
-
-let pokemon = ["PIKACHU", "CHARMANDER", "MEWTWO", "LUGIA", "TOTODILE", "CYNDAQUIL", "CHIKORITA", "EEVEE", "SQUIRTLE", "MEW", "ENTEI" ];
-
-for (let i = 0; i < pokemon.length; i++) {
-    if (i === numero) {
-        alert(pokemon[i]);
-        break
-    }
-}
-*/
-
-/*
-function cotizacionC (num1, num2){
-    resultado = num1 / num2
-    return alert(`Recibirá $ ${resultado.toFixed(2)}`)
-}
-function cotizacionV (num1 , num2){
-    resultado = num1 * num2
-    return alert(`Recibirá $ ${resultado.toFixed(2)} pesos argentinos`) 
-}
-
-const precioDivisa = [{
-    dolarC: 285, 
-    dolarV: 281
-},
-    {euroC: 313, 
-    euroV: 308
-},
-    {realC: 26, 
-    realV: 25
-}]
-
-/*let dolarC = 285
-let dolarV = 281
-
-let euroC = 313
-let euroV = 308
-
-let realC = 26
-let realV = 25
-
-let valorIngresado
-let resultado = 0
-
-let y = true
-
-do {
-let eleccion = prompt(`Que desea hacer?
-1. Comprar.
-2. Vender.
-3. Salir.`)
-
-switch(eleccion){
-    case "1":
-        let caso1 = Number(prompt(`Que desea comprar?
-        1. Dolar.
-        2. Euro.
-        3. Real.
-        4. Volver atras.`))
-
-        switch(caso1){
-            case 1:
-                valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
-                if (isNaN(valorIngresado)){
-                    alert(`Debe ingresar un numero`)
-                }else{
-                    cotizacionC (valorIngresado, precioDivisa[0].dolarC)
-                    //cotizacionC (valorIngresado, dolarC)
-                }
-
-            break
-            case 2:
-                valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
-                if (isNaN(valorIngresado)){
-                    alert(`Debe ingresar un numero`)
-                }else{
-                    cotizacionC (valorIngresado, precioDivisa[1].euroC)
-                    //cotizacionC (valorIngresado, euroC)
-                }
-            break
-            case 3:
-                valorIngresado = Number(prompt(`Ingrese la cantidad de pesos que desea convertir.`))
-                if (isNaN(valorIngresado)){
-                    alert(`Debe ingresar un numero`)
-                }else{
-                    cotizacionC (valorIngresado, precioDivisa[2].realC)
-                    //cotizacionC (valorIngresado, realC)
-                }
-            break
-            case 4:
-                
-            break1
-        }
-        break
-
-    case "2":
-        let caso2 = Number(prompt(`Que desea vender?
-        1. Dolar.
-        2. Euro.
-        3. Real.
-        4. Volver atras.`))
-        switch(caso2){
-            case 1:
-                valorIngresado = Number(prompt(`Ingrese la cantidad de dolares que desea vender.`))
-                if (isNaN(valorIngresado)){
-                    alert(`Debe ingresar un numero`)
-                }else{
-                    cotizacionV (valorIngresado, precioDivisa[0].dolarV)
-                    //cotizacionV (valorIngresado, dolarV)
-                }
-            break
-            case 2:
-                valorIngresado = Number(prompt(`Ingrese la cantidad de euros que desea vender.`))
-                if (isNaN(valorIngresado)){
-                    alert(`Debe ingresar un numero`)
-                }else{
-                    cotizacionV (valorIngresado, precioDivisa[1].euroV)
-                    //cotizacionV (valorIngresado, euroV)
-                }
-            break
-            case 3:
-                valorIngresado = Number(prompt(`Ingrese la cantidad de reales que desea vender.`))
-                if (isNaN(valorIngresado)){
-                    alert(`Debe ingresar un numero`)
-                }else{
-                    cotizacionV (valorIngresado, precioDivisa[2].realV)
-                    cotizacionV (valorIngresado, realV)
-                }
-            break
-        }
-        break
-    case "3":
-        alert(`Gracias por visitarnos`)
-        y = false
-        break
-    default:
-        alert(`No ingresaste una opcion valida.`)
-}
-}while(y === true)*/
-
-//-----------------------------------------------------------
-
-//function crearEquipo(){
-//    if (confirm = true){
-//        equipoPkm.push(elijeUnPkm)
-//    }
-//    else
-//    alert('Continua buscando tu Pokemon')
-//}
-
-function Pokemon(nombre,id, tipo1, tipo2, habilidad){
+//CONSTRUCTOR
+function Pokemon(nombre,id, tipo1, tipo2, habilidad, img = "../src/Charmander.png.webp"){
     this.nombre = nombre
     this.id = id
     this.tipo1 = tipo1
     this.tipo2 = tipo2
     this.habilidad = habilidad
+    this.img = img
 }
-
+//BASE DE DATOS DE POKEMON
 const pokemons = []
 let bulbasaur = new Pokemon('bulbasaur', 1, 'Planta', 'Veneno', 'Espesura')
 let ivysaur = new Pokemon('ivysaur',2, 'Plnata', 'Veneno','Espesura')
 let venasaur = new Pokemon('venasaur',3, 'Plnata', 'Veneno','Espesura')
-let charmander = new Pokemon('charmander',4, 'Fuego', 'Sin segundo tipo','Mar llamas')
+let charmander = new Pokemon('charmander',4, 'Fuego', 'Sin segundo tipo','Mar llamas', "../src/Charmander.png.webp")
 let charmeleon = new Pokemon('charmeleon',5, 'Fuego', 'Sin segundo tipo','Mar llamas')
 let charizard = new Pokemon('charizard',6, 'Fuego', 'Sin segundo tipo','Mar llamas')
 let squirtle = new Pokemon('squirtle',7, 'Agua', 'Sin segundo tipo','Torrente')
@@ -222,13 +39,13 @@ let sandshrew = new Pokemon('sandshrew',27, 'Tierra', 'Sin segundo tipo','Velo a
 let sandslash = new Pokemon('sandslash',28, 'Tierra', 'Sin segundo tipo','Velo arena')
 let nidoranH = new Pokemon('nidoranH',29, 'Veneno', 'Sin segundo tipo','Punto toxico')
 let nidorina = new Pokemon('nidorina',30, 'Veneno','Sin segundo tipo','Punto toxico')
+let tysis = new Pokemon('tysardo', 31, 'Veneno','Oscuridad','Porteñosis aguda', "../src/tysis.png")
 
-pokemons.push(bulbasaur, ivysaur, venasaur, charmander,charmeleon,charizard, squirtle, wartortle, blastoise, caterpie, metapod, butterfree, weedle, kakuna,beedrill, pidgey, pidgeotto, pidgeot, rattata, raticate, spearow, fearow, ekans, arbok, pikachu, raichu, sandshrew, sandslash ,nidoranH, nidorina)
+pokemons.push(bulbasaur, ivysaur, venasaur, charmander,charmeleon,charizard, squirtle, wartortle, blastoise, caterpie, metapod, butterfree, weedle, kakuna,beedrill, pidgey, pidgeotto, pidgeot, rattata, raticate, spearow, fearow, ekans, arbok, pikachu, raichu, sandshrew, sandslash ,nidoranH, nidorina, tysis)
 
 let equipoPkm = []
 
-let y = true
-
+let flag = true
 
 function inicio() {opcInicio = prompt(`Qué desea hacer?
 1. Buscar Pokemon.
@@ -237,22 +54,25 @@ function inicio() {opcInicio = prompt(`Qué desea hacer?
 4. Salir.`)
 return opcInicio
 }
+
 function buscador () {
-    buscarPkm = prompt('Escribe el nombre del pokemon que buscas.').toLocaleLowerCase()
+    buscarPkm = prompt('Escribe el nombre del pokemon que buscas.').toLowerCase()
     buscarPkmEnArray = pokemons.find(pkm => pkm.nombre == buscarPkm)
-    if(buscarPkmEnArray === undefined){
+    if(buscarPkmEnArray === undefined || buscarPkm == null || buscarPkm == 0){
     alert('Pokemon no encontrado, compruebe que el nombre de su Pokemon esté bien escrito.')
     buscador()
     }else{ 
     return buscarPkmEnArray}
 }
+//SIGUE SIN ANDARME EL "CANCEL"
+
 function agregarAlEquipo(){ 
-    confirm(`${buscarPkmEnArray.nombre.toUpperCase()} N: ${buscarPkmEnArray.id} 
+    let deseaAgregar = confirm(`${buscarPkmEnArray.nombre.toUpperCase()} N: ${buscarPkmEnArray.id} 
     Tipo: ${buscarPkmEnArray.tipo1.toUpperCase()}, ${buscarPkmEnArray.tipo2.toUpperCase()} 
     Habilidad: ${buscarPkmEnArray.habilidad.toUpperCase()}
     Desea agregar a ${buscarPkmEnArray.nombre.toUpperCase()} a su equipo?`)
-    if(agregarAlEquipo === false){
-    buscador()
+    if(deseaAgregar === false){
+    inicio()
     } else if(equipoPkm.length === 6){
     alert('Tu equipo está completo.')
     inicio()
@@ -262,20 +82,15 @@ function agregarAlEquipo(){
     }
 }
 function borrarEquipo(){
-    do(equipoPkm.shift())
-    while(equipoPkm.length != 0)
-    return alert('Borraste tu equipo.')
+        equipoPkm = []
 }
 
-
-do {
+while(flag === true){
 inicio()
 switch(opcInicio){
     case "1":
-    do{
     buscador()
     agregarAlEquipo()
-    }while(buscarPkm === 'esc' || equipoPkm.length <= 5)
     continue
     case "2":
         if(equipoPkm.length == 0){
@@ -286,12 +101,29 @@ switch(opcInicio){
         break
     case "3":
         borrarEquipo()
+        alert('Su equipo a sido borrado.')
         break
     case "4":
         alert(`Gracias por visitarnos`)
-        y = false
+        flag = false
         break
     default:
         alert(`No ingresaste una opción valida.`)
 }
-}while(y === true)
+}
+
+//DOM
+let sectionEquipo = document.getElementById("nav-equipo")
+let temp = document.querySelector("template")
+let card = temp.content.querySelector("div")
+
+equipoPkm.forEach((equipoPoke)=>{
+    let cardClonada = card.cloneNode(true)
+    sectionEquipo.appendChild(cardClonada)
+    //Nombre del Pokemon
+    cardClonada.children[0].innerText = equipoPoke.nombre.toUpperCase()
+    cardClonada.children[1].src = equipoPoke.img
+    cardClonada.children[2].innerText = equipoPoke.id
+    cardClonada.children[3].innerText = equipoPoke.tipo1 +" "+ equipoPoke.tipo2
+    cardClonada.children[4].innerText = equipoPoke.habilidad
+})
