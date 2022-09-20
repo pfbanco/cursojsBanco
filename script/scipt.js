@@ -1,5 +1,5 @@
 //CONSTRUCTOR
-function Pokemon(nombre,id, tipo1, tipo2, habilidad, img = "../src/Charmander.png.webp"){
+function Pokemon(nombre,id, tipo1, tipo2, habilidad, img = "./src/Charmander.png.webp"){
     this.nombre = nombre
     this.id = id
     this.tipo1 = tipo1
@@ -12,7 +12,7 @@ const pokemons = []
 let bulbasaur = new Pokemon('bulbasaur', 1, 'Planta', 'Veneno', 'Espesura')
 let ivysaur = new Pokemon('ivysaur',2, 'Plnata', 'Veneno','Espesura')
 let venasaur = new Pokemon('venasaur',3, 'Plnata', 'Veneno','Espesura')
-let charmander = new Pokemon('charmander',4, 'Fuego', 'Sin segundo tipo','Mar llamas', "../src/Charmander.png.webp")
+let charmander = new Pokemon('charmander',4, 'Fuego', 'Sin segundo tipo','Mar llamas', "./src/Charmander.png.webp")
 let charmeleon = new Pokemon('charmeleon',5, 'Fuego', 'Sin segundo tipo','Mar llamas')
 let charizard = new Pokemon('charizard',6, 'Fuego', 'Sin segundo tipo','Mar llamas')
 let squirtle = new Pokemon('squirtle',7, 'Agua', 'Sin segundo tipo','Torrente')
@@ -39,7 +39,7 @@ let sandshrew = new Pokemon('sandshrew',27, 'Tierra', 'Sin segundo tipo','Velo a
 let sandslash = new Pokemon('sandslash',28, 'Tierra', 'Sin segundo tipo','Velo arena')
 let nidoranH = new Pokemon('nidoranH',29, 'Veneno', 'Sin segundo tipo','Punto toxico')
 let nidorina = new Pokemon('nidorina',30, 'Veneno','Sin segundo tipo','Punto toxico')
-let tysis = new Pokemon('tysardo', 31, 'Veneno','Oscuridad','Porteñosis aguda', "../src/tysis.png")
+let tysis = new Pokemon('tysardo', 31, 'Veneno','Oscuridad','Porteñosis aguda', "./src/tysis.png")
 
 pokemons.push(bulbasaur, ivysaur, venasaur, charmander,charmeleon,charizard, squirtle, wartortle, blastoise, caterpie, metapod, butterfree, weedle, kakuna,beedrill, pidgey, pidgeotto, pidgeot, rattata, raticate, spearow, fearow, ekans, arbok, pikachu, raichu, sandshrew, sandslash ,nidoranH, nidorina, tysis)
 
