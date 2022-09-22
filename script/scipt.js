@@ -44,9 +44,10 @@ let tysis = new Pokemon('tysardo', 31, 'Veneno','Oscuridad','Porteñosis aguda',
 pokemons.push(bulbasaur, ivysaur, venasaur, charmander,charmeleon,charizard, squirtle, wartortle, blastoise, caterpie, metapod, butterfree, weedle, kakuna,beedrill, pidgey, pidgeotto, pidgeot, rattata, raticate, spearow, fearow, ekans, arbok, pikachu, raichu, sandshrew, sandslash ,nidoranH, nidorina, tysis)
 
 let equipoPkm = []
-
+let equipoFinal = []
+//Flag para salir del bucle. 
 let flag = true
-
+/*
 function inicio() {opcInicio = prompt(`Qué desea hacer?
 1. Buscar Pokemon.
 2. Ver mi equipo.
@@ -64,6 +65,7 @@ function buscador () {
     }else{ 
     return buscarPkmEnArray}
 }
+
 //SIGUE SIN ANDARME EL "CANCEL"
 
 function agregarAlEquipo(){ 
@@ -111,19 +113,65 @@ switch(opcInicio){
         alert(`No ingresaste una opción valida.`)
 }
 }
-
+*/
 //DOM
 let sectionEquipo = document.getElementById("nav-equipo")
-let temp = document.querySelector("template")
-let card = temp.content.querySelector("div")
+//let temp = document.querySelector("template")
+//let card = temp.content.querySelector("div")
+let cardPokedex = document.getElementById("pokemon-container")
+let busquedaPkm = document.querySelector("form")
 
+
+const quitarPkm = document.getElementById("delPokemon")
+const agregarPkm = document.getElementById("addPokemon")
+agregarPkm.addEventListener('click', ponerEnEquipo)
+//quitarPkm.addEventListener('click', sacarDelEquipo)
+
+function ponerEnEquipo(){
+    if(equipoFinal.length === 6){
+    alert('Tu equipo está completo.')
+    }else{
+    equipoPkm.push(buscarPkmEnArray)
+    agregarAlEquipo()
+}}
+
+function sacarDelEquipo(){
+    document.getElementById("nav-equipo").remove(this)
+    //sectionEquipo.removeChild(this)
+}
+
+const pkmBuscado = document.getElementById("namePokemon")
+
+busquedaPkm.addEventListener("submit", buscarPokemon)
+function buscarPokemon (e){
+    e.preventDefault()
+    let buscarPkm = pkmBuscado.value.toLowerCase()
+    buscarPkmEnArray = pokemons.find(pkm => pkm.nombre == buscarPkm)
+    if(buscarPkmEnArray === undefined || buscarPkm == null || buscarPkm == 0){
+    alert('Pokemon no encontrado, compruebe que el nombre de su Pokemon esté bien escrito.')
+    }else{
+    cardPokedex.innerHTML = `<div class="pokeCard">
+    <h5 class="pokeName">${buscarPkmEnArray.nombre.toUpperCase()}</h5>
+    <img class="pokeImg" src="${buscarPkmEnArray.img}" alt="Un pokemon">
+    <p class="pokeId">${buscarPkmEnArray.id}</p>
+    <p class="pokeTypes">${buscarPkmEnArray.tipo1 +" "+ buscarPkmEnArray.tipo2}</p>
+    <p class="pokeHabilidad">${buscarPkmEnArray.habilidad}</p>
+</div>`
+    }
+    return buscarPkmEnArray
+}
+
+function agregarAlEquipo (){
 equipoPkm.forEach((equipoPoke)=>{
-    let cardClonada = card.cloneNode(true)
-    sectionEquipo.appendChild(cardClonada)
-    //Nombre del Pokemon
-    cardClonada.children[0].innerText = equipoPoke.nombre.toUpperCase()
-    cardClonada.children[1].src = equipoPoke.img
-    cardClonada.children[2].innerText = equipoPoke.id
-    cardClonada.children[3].innerText = equipoPoke.tipo1 +" "+ equipoPoke.tipo2
-    cardClonada.children[4].innerText = equipoPoke.habilidad
-})
+    sectionEquipo.innerHTML += `<div class="pokeCard">
+    <h5 class="pokeName">${equipoPoke.nombre.toUpperCase()}</h5>
+    <img class="pokeImg" src="${equipoPoke.img}" alt="Un pokemon">
+    <p class="pokeId">${equipoPoke.id}</p>
+    <p class="pokeTypes">${equipoPoke.tipo1 +" "+ equipoPoke.tipo2}</p>
+    <p class="pokeHabilidad">${equipoPoke.habilidad}</p>
+    <button id="delPokemon">Quitar del equipo</button>
+</div>`
+    sectionEquipo.onclick = sacarDelEquipo
+    equipoFinal.push(equipoPkm)
+    equipoPkm = []
+})}

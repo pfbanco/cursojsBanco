@@ -39,3 +39,8 @@ h1{
     width: 180px;
     border-radius: 50%;
 }
+
+#nav-equipo{
+    display: flex;
+
+}
