@@ -5,45 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso Java Script</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./src/style.css"/>
 </head>
 <body>
     <h1>Constructor de Equipos Pokemon</h1>
     <header>
-        <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <button class="nav-link active" id="nav-inicio-tab" data-bs-toggle="tab" data-bs-target="#nav-inicio" type="button" role="tab" aria-controls="nav-inicio" aria-selected="true">Inicio</button>
-                <button class="nav-link" id="nav-pokedex-tab" data-bs-toggle="tab" data-bs-target="#nav-pokedex" type="button" role="tab" aria-controls="nav-pokedex" aria-selected="false">Pokedex</button>
-                <button class="nav-link" id="nav-equipo-tab" data-bs-toggle="tab" data-bs-target="#nav-equipo" type="button" role="tab" aria-controls="nav-equipo" aria-selected="false">Equipo</button>
-                <button class="nav-link" id="nav-contacto-tab" data-bs-toggle="tab" data-bs-target="#nav-contacto" type="button" role="tab" aria-controls="nav-contacto" aria-selected="false">Contacto</button>
-            </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-inicio" role="tabpanel" aria-labelledby="nav-inicio-tab" tabindex="0">
-                Bienvenido
-            </div>
+        <div class="container" id="container">
 
-
-            <div class="tab-pane fade" id="nav-pokedex" role="tabpanel" aria-labelledby="nav-pokedex-tab" tabindex="0">
-                <h1>Pokedex</h1>
+            <div class="nav-pokedex" id="nav-pokedex" >
+                <h2>Pokedex</h2>
                 <form action="">
                     <input type="text" id="namePokemon" placeholder="Pokemon" autocomplete="off">
                 </form>
                 
                 <button id="addPokemon" alt="AGREGAR">Agregar</button>
-            </br>
-                <div id="pokemon-container"></div>
+
+                <div id="pokemon-container">
+                
+                </div>
             </div>
-            <div class="tab-pane fade" id="nav-equipo" role="tabpanel" aria-labelledby="nav-equipo-tab" tabindex="0">
-            </div>          
-            <div class="tab-pane fade" id="nav-contacto" role="tabpanel" aria-labelledby="nav-contacto-tab" tabindex="0">
-                Contacto
+
+
+            <div class="nav-equipo" id="nav-equipo">
+                <h2>Equipo Pokemon</h2>
+                <div id="contenedor-equipo"></div>
             </div>
         </div>
+
+
+        <div class="nav-contacto" id="nav-contacto">
+            <h2>Contacto</h2>
+        </div>
+
+        
     </header>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script src="./script/scipt.js"></script>    
 </body>
 </html>
