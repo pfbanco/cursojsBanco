@@ -44,16 +44,15 @@ let tysis = new Pokemon('tysardo', 31, 'Veneno','Oscuridad','Porteñosis aguda',
 
 pokemons.push(bulbasaur, ivysaur, venasaur, charmander,charmeleon,charizard, squirtle, wartortle, blastoise, caterpie, metapod, butterfree, weedle, kakuna,beedrill, pidgey, pidgeotto, pidgeot, rattata, raticate, spearow, fearow, ekans, arbok, pikachu, raichu, sandshrew, sandslash ,nidoranH, nidorina, tysis)
 
-let equipoPkm = []
+let equipoDesdeJSON = JSON.parse(localStorage.getItem("equipo")) 
 let idGlo = 0
 
 //DOM
 
-//LO NECESARIO PARA BUSCAR EL POKEMON Y MOSTRARLO EN PANTALLA
+//------------------------------------------------------------LO NECESARIO PARA BUSCAR EL POKEMON Y MOSTRARLO EN PANTALLA
 const $formPmk = document.querySelector("form")
 const $pkmBuscado = document.getElementById("namePokemon")
 const $pokedexContainer = document.getElementById("pokemon-container")
-
 $formPmk.addEventListener("submit", buscarPokemon)
 
 function buscarPokemon (e){
@@ -73,27 +72,28 @@ function buscarPokemon (e){
     }
     return pkmEnArray
 }
-//------------------------------------------------------------
-//USO BOTON PARA AGREGAR AL EQUIPO Y MOSTRARLO EN PANTALLA
+//------------------------------------------------------------USO BOTON PARA AGREGAR AL EQUIPO Y MOSTRARLO EN PANTALLA
 const $btnAdd = document.getElementById("addPokemon")
 const $equipoContainer = document.getElementById("nav-equipo")
-
 $btnAdd.addEventListener('click', addEquipo)
 
 function addEquipo(){
-    if(equipoPkm.length === 6){
+    if(equipoDesdeJSON.length === 6){
     alert('Tu equipo está completo.')
     }else{
     idGlo++
-    equipoPkm.push( new Pokemon(pkmEnArray.nombre,pkmEnArray.idPkm, pkmEnArray.tipo1, pkmEnArray.tipo2,pkmEnArray.habilidad,pkmEnArray.img, idGlo))
+    equipoDesdeJSON.push( new Pokemon(pkmEnArray.nombre,pkmEnArray.idPkm, pkmEnArray.tipo1, pkmEnArray.tipo2,pkmEnArray.habilidad,pkmEnArray.img, idGlo))
     }
+    let equipoTemp = JSON.stringify(equipoDesdeJSON)
+    localStorage.setItem("equipo", equipoTemp)
     enlistarPkm()
 }
-//------------------------------------------------------------
-//ENLISTO POKEMON Y MUESTRO EN PANTALLA
+
+//------------------------------------------------------------ENLISTO POKEMON Y MUESTRO EN PANTALLA
 function enlistarPkm(){
+    equipoDesdeJSON = JSON.parse(localStorage.getItem("equipo"))
     $equipoContainer.innerHTML = ""
-    equipoPkm.forEach(pkm =>{
+    equipoDesdeJSON.forEach(pkm =>{
         const card = document.createElement('card')
         card.innerHTML = `<div class="pokeCard">
                             <h5 class="pokeName">${pkm.nombre.toUpperCase()}</h5>
@@ -107,27 +107,15 @@ function enlistarPkm(){
     const $delPkm = document.getElementById(`btnQuitar${pkm.id}`)
     $delPkm.addEventListener('click',() =>{ remEquipo(pkm.id)})
 })}
-//------------------------------------------------------------
-//ELIMINAR POKEMON
+
+//------------------------------------------------------------ELIMINAR POKEMONS DEL EQUIPO
 function remEquipo(e){
-    equipoPkm = equipoPkm.filter(function(pkm){
+    const equipo = JSON.parse(localStorage.getItem("equipo")).filter(function(pkm){
         return pkm.id !== e
     })
+    let equipoTemp = JSON.stringify(equipo)
+    localStorage.setItem("equipo", equipoTemp)
     enlistarPkm()
 }
-/*function enlistarPkm(){
-    $equipoContainer.innerHTML = ""
-    equipoPkm.forEach(pkm =>{
-        const card = document.createElement('card')
-        card.innerHTML = `<div class="pokeCard">
-                            <h5 class="pokeName">${pkm.nombre.toUpperCase()}</h5>
-                            <img class="pokeImg" src="${pkm.img}" alt="Un pokemon">
-                            <p class="pokeId">${pkm.id}</p>
-                            <p class="pokeTypes">${pkm.tipo1 +" "+ pkm.tipo2}</p>
-                            <p class="pokeHabilidad">${pkm.habilidad}</p>
-                            <button id="btnQuitar">Sacar del Equipo</button>
-                        </div>`
-    $equipoContainer.appendChild(card)})
-    alert(`Agregaste a ${pkmEnArray.nombre} en tu equipo.`)
-}*/
-//VAMOS A PROBAR SI PUEDO METER LA FUNCION PARA BORRAR 1 POKEMON
+
+enlistarPkm()
