@@ -44,10 +44,10 @@ let tysis = new Pokemon('tysardo', 31, 'Veneno','Oscuridad','Porteñosis aguda',
 
 pokemons.push(bulbasaur, ivysaur, venasaur, charmander,charmeleon,charizard, squirtle, wartortle, blastoise, caterpie, metapod, butterfree, weedle, kakuna,beedrill, pidgey, pidgeotto, pidgeot, rattata, raticate, spearow, fearow, ekans, arbok, pikachu, raichu, sandshrew, sandslash ,nidoranH, nidorina, tysis)
 
-let equipoDesdeJSON = JSON.parse(localStorage.getItem("equipo"))|| []
+let equipoDesdeJSON = JSON.parse(localStorage.getItem("equipo")) || []
 let idGlo = 0
 
-    
+
 //DOM
 
 //------------------------------------------------------------LO NECESARIO PARA BUSCAR EL POKEMON Y MOSTRARLO EN PANTALLA
@@ -92,7 +92,6 @@ function addEquipo(){
 
 //------------------------------------------------------------ENLISTO POKEMON Y MUESTRO EN PANTALLA
 function enlistarPkm(){
-    equipoDesdeJSON = JSON.parse(localStorage.getItem("equipo"))
     $equipoContainer.innerHTML = ""
     equipoDesdeJSON.forEach(pkm =>{
         const card = document.createElement('card')
@@ -111,10 +110,11 @@ function enlistarPkm(){
 
 //------------------------------------------------------------ELIMINAR POKEMONS DEL EQUIPO
 function remEquipo(e){
-    const equipo = JSON.parse(localStorage.getItem("equipo")).filter(function(pkm){
+    const equipo = equipoDesdeJSON.filter(function(pkm){
         return pkm.id !== e
     })
-    let equipoTemp = JSON.stringify(equipo)
+    equipoDesdeJSON = [...equipo]
+    let equipoTemp = JSON.stringify(equipoDesdeJSON)
     localStorage.setItem("equipo", equipoTemp)
     enlistarPkm()
 }
