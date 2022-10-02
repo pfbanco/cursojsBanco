@@ -78,7 +78,15 @@ const $btnAdd = document.getElementById("addPokemon")
 const $equipoContainer = document.getElementById("nav-equipo")
 $btnAdd.addEventListener('click', addEquipo)
 
+//OPCION CON OPERADOR TERNARIO
 function addEquipo(){
+    equipoDesdeJSON.length === 6 ? (alert('Tu equipo está completo.')):(idGlo++, equipoDesdeJSON.push( new Pokemon(pkmEnArray.nombre,pkmEnArray.idPkm, pkmEnArray.tipo1, pkmEnArray.tipo2,pkmEnArray.habilidad,pkmEnArray.img, idGlo)))
+    let equipoTemp = JSON.stringify(equipoDesdeJSON)
+    localStorage.setItem("equipo", equipoTemp)
+    enlistarPkm()
+}
+
+/*function addEquipo(){
     if(equipoDesdeJSON.length === 6){
     alert('Tu equipo está completo.')
     }else{
@@ -88,7 +96,7 @@ function addEquipo(){
     let equipoTemp = JSON.stringify(equipoDesdeJSON)
     localStorage.setItem("equipo", equipoTemp)
     enlistarPkm()
-}
+}*/
 
 //------------------------------------------------------------ENLISTO POKEMON Y MUESTRO EN PANTALLA
 function enlistarPkm(){
