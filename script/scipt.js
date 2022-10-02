@@ -46,7 +46,6 @@ pokemons.push(bulbasaur, ivysaur, venasaur, charmander,charmeleon,charizard, squ
 //localStorage.setItem("equipo", JSON.stringify(pokemons))
 let equipoDesdeJSON = []
 equipoDesdeJSON = JSON.parse(localStorage.getItem("equipo"))
-enlistarPkm()
 let idGlo = 0
 
 //DOM
@@ -119,3 +118,4 @@ function remEquipo(e){
     localStorage.setItem("equipo", equipoTemp)
     enlistarPkm()
 }
+enlistarPkm()
