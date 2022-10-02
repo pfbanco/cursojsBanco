@@ -119,4 +119,4 @@ function remEquipo(e){
     enlistarPkm()
 }
 
-//enlistarPkm()
+enlistarPkm()
