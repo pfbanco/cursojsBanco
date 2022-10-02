@@ -43,8 +43,9 @@ let nidorina = new Pokemon('nidorina',30, 'Veneno','Sin segundo tipo','Punto tox
 let tysis = new Pokemon('tysardo', 31, 'Veneno','Oscuridad','Porteñosis aguda', "./src/tysis.png")
 
 pokemons.push(bulbasaur, ivysaur, venasaur, charmander,charmeleon,charizard, squirtle, wartortle, blastoise, caterpie, metapod, butterfree, weedle, kakuna,beedrill, pidgey, pidgeotto, pidgeot, rattata, raticate, spearow, fearow, ekans, arbok, pikachu, raichu, sandshrew, sandslash ,nidoranH, nidorina, tysis)
-//localStorage.setItem("equipo", JSON.stringify(pokemons))
-let equipoDesdeJSON = JSON.parse(localStorage.getItem("equipo")) 
+
+//let equipoDesdeJSON = []
+let equipoDesdeJSON = JSON.parse(localStorage.getItem("equipo"))|| []
 let idGlo = 0
 
 //DOM
@@ -118,4 +119,4 @@ function remEquipo(e){
     enlistarPkm()
 }
 
-//enlistarPkm()
+enlistarPkm()
