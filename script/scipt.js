@@ -45,7 +45,7 @@ let tysis = new Pokemon('tysardo', 31, 'Veneno','Oscuridad','Porteñosis aguda',
 pokemons.push(bulbasaur, ivysaur, venasaur, charmander,charmeleon,charizard, squirtle, wartortle, blastoise, caterpie, metapod, butterfree, weedle, kakuna,beedrill, pidgey, pidgeotto, pidgeot, rattata, raticate, spearow, fearow, ekans, arbok, pikachu, raichu, sandshrew, sandslash ,nidoranH, nidorina, tysis)
 //localStorage.setItem("equipo", JSON.stringify(pokemons))
 let equipoDesdeJSON = []
-//let equipoDesdeJSON = JSON.parse(localStorage.getItem("equipo")) 
+equipoDesdeJSON = JSON.parse(localStorage.getItem("equipo")) 
 let idGlo = 0
 
 //DOM
