@@ -51,10 +51,11 @@ let idGlo = 0
 //DOM
 
 //------------------------------------------------------------LO NECESARIO PARA BUSCAR EL POKEMON Y MOSTRARLO EN PANTALLA
-const $formPmk = document.querySelector("form")
+const $formPmk = document.getElementById("buscarPokemon")
+//const $formPmk = document.querySelector("form")
 const $pkmBuscado = document.getElementById("namePokemon")
 const $pokedexContainer = document.getElementById("pokemon-container")
-$formPmk.addEventListener("submit", buscarPokemon)
+$formPmk.addEventListener("click", buscarPokemon)
 
 function buscarPokemon (e){
     e.preventDefault()
@@ -75,20 +76,24 @@ function buscarPokemon (e){
 }
 //------------------------------------------------------------USO BOTON PARA AGREGAR AL EQUIPO Y MOSTRARLO EN PANTALLA
 const $btnAdd = document.getElementById("addPokemon")
-const $equipoContainer = document.getElementById("nav-equipo")
+const $equipoContainer = document.getElementById("contenedor-equipo")
 $btnAdd.addEventListener('click', addEquipo)
 
 //OPCION CON OPERADOR TERNARIO
-function addEquipo(){
+/*function addEquipo(){
     equipoDesdeJSON.length === 6 ? (alert('Tu equipo está completo.')):(idGlo++, equipoDesdeJSON.push( new Pokemon(pkmEnArray.nombre,pkmEnArray.idPkm, pkmEnArray.tipo1, pkmEnArray.tipo2,pkmEnArray.habilidad,pkmEnArray.img, idGlo)))
     let equipoTemp = JSON.stringify(equipoDesdeJSON)
     localStorage.setItem("equipo", equipoTemp)
     enlistarPkm()
-}
+}*/
 
-/*function addEquipo(){
+function addEquipo(){
     if(equipoDesdeJSON.length === 6){
-    alert('Tu equipo está completo.')
+        Swal.fire({
+            icon: 'error',
+            title: 'Tu equipo está completo!',
+            footer: 'Haz espacio en tu  equipo para tu nuevo Pokemon'
+        })
     }else{
     idGlo++
     equipoDesdeJSON.push( new Pokemon(pkmEnArray.nombre,pkmEnArray.idPkm, pkmEnArray.tipo1, pkmEnArray.tipo2,pkmEnArray.habilidad,pkmEnArray.img, idGlo))
@@ -96,7 +101,7 @@ function addEquipo(){
     let equipoTemp = JSON.stringify(equipoDesdeJSON)
     localStorage.setItem("equipo", equipoTemp)
     enlistarPkm()
-}*/
+}
 
 //------------------------------------------------------------ENLISTO POKEMON Y MUESTRO EN PANTALLA
 function enlistarPkm(){
@@ -127,4 +132,17 @@ function remEquipo(e){
     enlistarPkm()
 }
 
-enlistarPkm()
+//------------------------------------------------------------ELIMINAR POKEMONS DEL EQUIPO
+const $mostrarEquipo = document.getElementById("showTeam")
+$mostrarEquipo.addEventListener('click', mostrarEnModal)
+
+function mostrarEnModal() {
+    let mostrar = equipoDesdeJSON.map(pkm => pkm.nombre.toUpperCase())
+    Swal.fire({
+        icon: 'success',
+        title: 'Tu equipo esta compuesto por:',
+        text: mostrar,
+        //footer: '<a href="">Why do I have this issue?</a>'
+    })
+}
+enlistarPkm ()
