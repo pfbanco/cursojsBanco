@@ -79,7 +79,7 @@ const $btnAdd = document.getElementById("addPokemon")
 const $equipoContainer = document.getElementById("contenedor-equipo")
 $btnAdd.addEventListener('click', addEquipo)
 
-//OPCION CON OPERADOR TERNARIO
+//------------------------------------------------------------OPCION CON OPERADOR TERNARIO
 /*function addEquipo(){
     equipoDesdeJSON.length === 6 ? (alert('Tu equipo está completo.')):(idGlo++, equipoDesdeJSON.push( new Pokemon(pkmEnArray.nombre,pkmEnArray.idPkm, pkmEnArray.tipo1, pkmEnArray.tipo2,pkmEnArray.habilidad,pkmEnArray.img, idGlo)))
     let equipoTemp = JSON.stringify(equipoDesdeJSON)
@@ -132,17 +132,31 @@ function remEquipo(e){
     enlistarPkm()
 }
 
-//------------------------------------------------------------ELIMINAR POKEMONS DEL EQUIPO
+//------------------------------------------------------------MOSTRAR EQUIPO EN MODAL IMAGEN
 const $mostrarEquipo = document.getElementById("showTeam")
 $mostrarEquipo.addEventListener('click', mostrarEnModal)
 
 function mostrarEnModal() {
+    Swal.fire({
+        title: 'Excelente!',
+        text: 'Este es tu equipo Pokemon.',
+    })
+    const $divPrueba = document.querySelector('.swal2-popup')
+    $divPrueba.removeChild(document.querySelector('.swal2-actions'))
+    equipoDesdeJSON.forEach(pkm => {
+        const imgPkm = document.createElement('imgPkm')
+        imgPkm.innerHTML = `<div><img class="swal2-image" src="${pkm.img}" alt="Pokemon image" style="width: 100px; height: 100px; display: block; margin-left: auto; margin-rigth: auto; border-radius: 10px;"></div> `
+        $divPrueba.appendChild(imgPkm)})
+}
+//-------------------------------------------------------------MOSTRAR EQUIPO EN MODAL NOMBRE
+
+/*function mostrarEnModal() {
     let mostrar = equipoDesdeJSON.map(pkm => pkm.nombre.toUpperCase())
     Swal.fire({
         icon: 'success',
         title: 'Tu equipo esta compuesto por:',
         text: mostrar,
-        //footer: '<a href="">Why do I have this issue?</a>'
     })
-}
+}*/
+
 enlistarPkm ()
