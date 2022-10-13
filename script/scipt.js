@@ -51,13 +51,11 @@ let idGlo = 0
 //DOM
 
 //------------------------------------------------------------LO NECESARIO PARA BUSCAR EL POKEMON Y MOSTRARLO EN PANTALLA
-const $formPmk = document.getElementById("buscarPokemon")
-//const $formPmk = document.querySelector("form")
+const $formPmk = document.getElementById("buscador")
 const $pkmBuscado = document.getElementById("namePokemon")
 const $pokedexContainer = document.getElementById("pokemon-container")
 $formPmk.addEventListener("click", buscarPokemon)
-
-function buscarPokemon (e){
+/*function buscarPokemon (e){
     e.preventDefault()
     let buscarPkm = $pkmBuscado.value.toLowerCase()
     pkmEnArray = pokemons.find(pkm => pkm.nombre == buscarPkm)
@@ -73,7 +71,28 @@ function buscarPokemon (e){
 </div>`
     }
     return pkmEnArray
-}
+}*/
+//------------------------------------------------------------
+
+function buscarPokemon (e){
+    e.preventDefault()
+    let buscarPkm = $pkmBuscado.value.toLowerCase()
+    fetch(`https://pokeapi.co/api/v2/pokemon/${buscarPkm}`)
+        .then(resp => resp.json())
+        .then(data => {
+            pkmEnArray = data
+            $pokedexContainer.innerHTML = `<div class="pokeCard">
+            <h3 class="pokeName">${data.name.toUpperCase()}</h3>
+            <img class="pokeImg" src="${data.sprites.front_default}" alt="Un pokemon">
+            <p class="pokeId"> N°:${data.id.toString().padStart(3, 0)}</p>
+            <p class="pokeHabilidad">${data.abilities[0].ability.name.toUpperCase()}</p>
+            <p class="pokeTypes">${data.types[0].type.name.toUpperCase()} ${data.types[1] ? data.types[1].type.name.toUpperCase() : ""}</p>
+            </div>`
+            })
+        .catch(() =>{
+            alert(`Pokemon no encontrado, compruebe que el nombre de su Pokemon esté bien escrito.`)})
+        }
+
 //------------------------------------------------------------USO BOTON PARA AGREGAR AL EQUIPO Y MOSTRARLO EN PANTALLA
 const $btnAdd = document.getElementById("addPokemon")
 const $equipoContainer = document.getElementById("contenedor-equipo")
@@ -87,6 +106,7 @@ $btnAdd.addEventListener('click', addEquipo)
     enlistarPkm()
 }*/
 
+//------------------------------------------------------------
 function addEquipo(){
     if(equipoDesdeJSON.length === 6){
         Swal.fire({
@@ -97,6 +117,21 @@ function addEquipo(){
     }else{
     idGlo++
     equipoDesdeJSON.push( new Pokemon(pkmEnArray.nombre,pkmEnArray.idPkm, pkmEnArray.tipo1, pkmEnArray.tipo2,pkmEnArray.habilidad,pkmEnArray.img, idGlo))
+    }
+    let equipoTemp = JSON.stringify(equipoDesdeJSON)
+    localStorage.setItem("equipo", equipoTemp)
+    enlistarPkm()
+}
+//------------------------------------------------------------
+function addEquipo(){
+    if(equipoDesdeJSON.length === 6){
+        Swal.fire({
+            icon: 'error',
+            title: 'Tu equipo está completo!',
+            footer: 'Haz espacio en tu  equipo para tu nuevo Pokemon'
+        })
+    }else{
+    equipoDesdeJSON.push(pkmEnArray)
     }
     let equipoTemp = JSON.stringify(equipoDesdeJSON)
     localStorage.setItem("equipo", equipoTemp)
