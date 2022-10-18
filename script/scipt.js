@@ -11,21 +11,22 @@ $formPmk.addEventListener("click", buscarPokemon)
 
 //------------------------------------------------------------FUNCION BUSCADORA
 
-async function buscarPokemon (e) {
+async function buscarPokemon(e) {
     e.preventDefault()
-    
     let buscarPkm = $pkmBuscado.value.toLowerCase()
     await fetch(`https://pokeapi.co/api/v2/pokemon/${buscarPkm}`)
         .then(resp => resp.json())
         .then(data => {
-            pkmEnArray = data
             $pokedexContainer.innerHTML = `<div class="pokeCard">
-            <h3 class="pokeName">${data.name.toUpperCase()}</h3>
-            <img class="pokeImg" src="${data.sprites.front_default}" alt="Un pokemon">
-            <p class="pokeId"> N°:${data.id.toString().padStart(3, 0)}</p>
-            <p class="pokeHabilidad">${data.abilities[0].ability.name.toUpperCase()}</p>
-            <p class="pokeTypes">${data.types[0].type.name.toUpperCase()} ${data.types[1] ? data.types[1].type.name.toUpperCase() : ""}</p>
-            </div>`
+                <h3 class="pokeName">${data.name.toUpperCase()}</h3>
+                <img class="pokeImg" src="${data.sprites.front_default}" alt="Un pokemon">
+                <p class="pokeId"> N°:${data.id.toString().padStart(3, 0)}</p>
+                <p class="pokeHabilidad">${data.abilities[0].ability.name.toUpperCase()}</p>
+                <p class="pokeTypes">${data.types[0].type.name.toUpperCase()} ${data.types[1] ? data.types[1].type.name.toUpperCase() : ""}</p>
+                <button id="addPokemon${data}">Agregar al Equipo</button>
+                </div>`
+            const $btnAdd = document.getElementById(`addPokemon${data}`)
+            $btnAdd.addEventListener("click", () => {addEquipo(data)})
             })
         .catch(() =>{
             Swal.fire({
@@ -34,13 +35,11 @@ async function buscarPokemon (e) {
                 text: 'Escribe el nombre de tu pokemon correctamente.',
                 footer: 'Tambien es posible buscar por ID del Pokemon.'
             })})
-        }
+    }
 
 //------------------------------------------------------------USO BOTON PARA AGREGAR AL EQUIPO Y MOSTRARLO EN PANTALLA
 
-const $btnAdd = document.getElementById("addPokemon")
 const $equipoContainer = document.getElementById("contenedor-equipo")
-$btnAdd.addEventListener("click", () => {addEquipo(pkmEnArray)})
 
 //------------------------------------------------------------FUNCION PARA AGREGAR AL EQUIPO Y MOSTRAR EN PANTALLA
 
@@ -144,6 +143,3 @@ async function randomTeam (){
 //-------------------------------------------------------------
 
 enlistarPkm ()
-
-
-
