@@ -7,6 +7,7 @@ El usuario puede:
 4- Se puede mostrar el equipo en un modal dependiendo de la cantidad de miembros del equipo arrojará un msj diferente (a través del botón "Mostrar equipo").
 
 Los datos se obtienen de una API (https://pokeapi.co/)
+ESTA API TIENE UNA BASE DE DATOS DE 898 PKM POR LO QUE SI NO SABE EL NOMBRE DE NINGUN PKM PUEDE BUSCARLOS USANDO UN NUMERO DE 1 a 828
 Para las alertas se usó SweetAlert 2
 
 Las mayores dificultades:
